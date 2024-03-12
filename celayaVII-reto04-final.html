@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDoList</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: "Kode Mono", monospace;
+            font-style: normal;
+            color: #1f1d1d;
+        }
+
+        header,
+        footer {
+            display: flex;
+            width: 100%;
+            height: 60px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*SECCIONES*/
+        #section1 {
+            display: flex;
+            font-size: 14px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #section2 {
+            display: none;
+        }
+
+        #section3 {
+            display: none;
+        }
+
+        #section4 {
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section {
+            width: 100%;
+            min-height: calc(100vh - 120px);
+            background: rgb(129, 129, 129);
+            background: linear-gradient(0deg,
+                    rgba(129, 129, 129, 1) 0%,
+                    rgba(240, 39, 147, 1) 100%);
+        }
+
+        .section__container {
+            display: flex;
+            height: 500px;
+            width: 80%;
+            max-width: 640px;
+            background-color: #f9f9f9;
+            margin: 10px auto 70px;
+            padding: 40px 30px 50px 30px;
+            border-radius: 15px;
+            flex-direction: column;
+
+        }
+
+        .section__container1 {
+            display: flex;
+            height: 500px;
+            width: 80%;
+            max-width: 640px;
+            background-color: #f9f9f9;
+            margin: 10px auto 70px;
+            padding: 40px 30px 50px 30px;
+            border-radius: 15px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section__container--form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            background: #b6b0b0;
+            border-radius: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form__inputs {
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 10px;
+            padding-left: 10px;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        /* #clasesTarea {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background-color: #b6b0b0;
+            padding: 10px;
+            border-radius: 15px;
+            width: 100%;
+        } */
+
+        button {
+            border: none;
+            outline: none;
+            padding: 16px 50px;
+            background-color: #1f01a8;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 40px;
+        }
+
+        button:hover {
+            background-color: #1a0188;
+            color: #fff;
+        }
+
+        .fab {
+            position: absolute;
+            right: 25px;
+            bottom: 25px;
+        }
+
+
+
+
+        ul li {
+            display: flex;
+            flex-flow: row;
+            background: #b6b0b0;
+            border-radius: 20px;
+            list-style: none;
+            font-size: 18px;
+            padding: 10px 8px 10px 25px;
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+            margin: 0px 10px 10px 0px;
+        }
+
+        .icon {
+            position: absolute;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            top: 15px;
+            cursor: pointer;
+        }
+
+        .iconClass {
+            position: absolute;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            top: 15px;
+            cursor: pointer;
+        }
+
+
+        .checkbox {
+            right: 70px;
+        }
+
+        .delete {
+            right: 20px;
+        }
+
+        .checked {
+            text-decoration: line-through;
+        }
+
+        .txt {
+            font-size: 18px;
+            margin: 10px
+        }
+
+        .txtLista {
+            font-size: 18px;
+            margin: 10px;
+            margin-left: 200px;
+        }
+
+        span {
+            display: flex;
+        }
+
+        .section__container--sec4 {
+            display: flex;
+            width: 100%;
+            max-width: 240px;
+            background: #f9f9f9;
+            margin: 10px auto 70px;
+            padding: 20px 30px 20px 30px;
+            border-radius: 10px;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 300px;
+
+
+        }
+
+        .tareita {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #b6b0b0;
+            height: 45px;
+            width: 180px;
+            margin-bottom: 15px;
+            border: solid 1px #535252;
+        }
+
+        .div__tareas--icon {
+
+            position: absolute;
+            bottom: 15px;
+
+        }
+
+        #div__desc--tarea {
+            height: 50px;
+            display: flex;
+            justify-content: flex-start;
+
+        }
+
+        #closeIcon {
+            height: 30px;
+            width: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+
+        .iconSect4 {
+            height: 65px;
+            width: 65px;
+            cursor: pointer;
+        }
+
+        /*COLORES*/
+        .pink {
+            background-color: rgba(240, 39, 147, 1);
+        }
+
+        .grey {
+            background-color: rgba(129, 129, 129, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header" class="pink">
+        <h1 id="header__titulo" class="header__titulo">toDoList</h1>
+    </header>
+
+    <div id="section1" class="section">
+        <div class="section__container1">
+            <h2 id="saludoTxt"></h2>
+        </div>
+        <button id="fabBtn" class="button fab">+</button>
+    </div>
+
+
+    <div id="section2" class="section">
+        <div class="section__container">
+            <div class="section__container--form">
+                <input id="nombreTarea" class="form__inputs" type="text" placeholder="Agregar tarea">
+            </div>
+            <div class="section__container--form">
+                <select name="" id="clasesTarea" class="form__inputs">
+                    <option value="hogar">Hogar</option>
+                    <option value="trabajo">Trabajo</option>
+                    <option value="entretenimiento">Entretenimiento</option>
+                    <option value="otros">Otros</option>
+                </select>
+            </div>
+            <div class="section__container--form">
+                <textarea name="" id="descripcionTarea" cols="30" rows="10" placeholder="Describa su tarea"
+                    class="form__inputs"></textarea>
+            </div>
+            <button id="agregarBtn" class="button agregarTarea" onclick="agregarTarea()">Agregar</button>
+        </div>
+    </div>
+
+
+    <div id="section3" class="section">
+        <div class="section__container">
+            <h2>Tareas</h2>
+            <div id="tareas" class="">
+                <ul id="listaTareas">
+                </ul>
+                <button id="nuevaTareaBtn" class="button fab">Nueva tarea</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="section4" class="section">
+        <!-- <div class="section__container--sec4">
+            <img id="closeIcon" class="iconSect4" src="https://img.icons8.com/plasticine/100/cancel.png" alt="cancel"
+                onclick="cerrarTarea()" />
+            <h4 id="tituloTarea" class="tituloTarea"> </h4>
+
+
+            <div id="div__tarea__img" class="txt"> </div>
+
+            <div id="div__desc--tarea" class="tareita">
+                <p id="txtDesc" class="txt"> </p>
+            </div>
+            <div class="div__tareas--icon">
+                <img id="checkIconSect4" src="https://img.icons8.com/plasticine/100/unchecked-checkbox.png"
+                    alt="unchecked-checkbox" class="iconSect4" onclick="tachar()" />
+                <img id="deleteSect4" class="iconSect4" src="https://img.icons8.com/plasticine/100/delete.png"
+                    alt="delete" onclick="eliminarTarea()" />
+            </div> -->
+    </div>
+    </div>
+    <footer id="footer" class="grey">
+        <p id="footer__copyright" class="footer__copyright">Copyright Franco Celadilla </p>
+    </footer>
+    <script>
+        let section1 = document.getElementById("section1");
+        let section2 = document.getElementById("section2");
+        let section3 = document.getElementById("section3");
+        let section4 = document.getElementById("section4");
+        let saludoTxt = document.getElementById("saludoTxt");
+        let fabBtn = document.getElementById("fabBtn");
+        let agregarBtn = document.getElementById("agregarBtn");
+        let nuevaTareaBtn = document.getElementById("nuevaTareaBtn");
+        let listaTareas = document.getElementById("listaTareas");
+        let nombre = document.getElementById("nombreTarea");
+        let clase = document.getElementById("clasesTarea");
+        let descripcion = document.getElementById("descripcionTarea");
+
+        let tituloTarea = document.getElementById(" tituloTarea");
+        let txtDesc = document.getElementById("txtDesc");
+        let divImgTarea = document.getElementById("div__tarea__img");
+
+        let tareas = [];
+        let contador = 0;
+
+        // FRASES RANDOM
+
+        const frases = [
+            '"El único modo de hacer un gran trabajo es amar lo que haces." ',
+            '"La vida es lo que pasa mientras estás ocupado haciendo otros planes." ',
+            '"El éxito es la suma de pequeños esfuerzos repetidos día tras día." ',
+            '"No importa lo lento que vayas, siempre y cuando no te detengas." ',
+            '"El secreto del cambio es enfocar toda tu energía no en luchar contra lo viejo, sino en construir lo nuevo." ',
+            '"El éxito no es la clave de la felicidad. La felicidad es la clave del éxito. Si amas lo que haces, tendrás éxito." ',
+            '"La mejor manera de predecir el futuro es crearlo." ',
+            '"El único lugar donde el éxito viene antes que el trabajo es en el diccionario." ',
+            '"No te preocupes por los fracasos, preocúpate por las posibilidades que pierdes cuando ni siquiera lo intentas." ',
+            '"Haz hoy lo que otros no quieren, haz mañana lo que otros no pueden." ',
+            '"No cuentes los días, haz que los días cuenten." ',
+            '"El que nunca ha cometido un error nunca ha intentado nada nuevo." ',
+            '"No busques errores, busca soluciones." ',
+            '"Tu tiempo es limitado, así que no lo desperdicies viviendo la vida de alguien más." ',
+        ];
+
+        const random = Math.floor(Math.random() * 13);
+
+        saludoTxt.innerHTML += frases[random];
+
+        // FAB BUTTON
+        fabBtn.addEventListener("click", () => {
+            section1.style.display = "none";
+            section2.style.display = "flex";
+            section3.style.display = "none";
+        });
+
+        // FUNCION PARA CREAR TAREA NUEVA
+
+        const crearTarea = () => {
+
+
+
+            let emojiclase;
+
+            if (clase.value == "hogar") {
+                emojiclase = "https://img.icons8.com/plasticine/40/futurama-bender.png";
+            } if (clase.value == "trabajo") {
+                emojiclase = "https://img.icons8.com/plasticine/40/rick-sanchez.png";
+            } if (clase.value == "entretenimiento") {
+                emojiclase = "https://img.icons8.com/plasticine/40/homer-simpson.png";
+            } if (clase.value == "otros") {
+                emojiclase = "https://img.icons8.com/plasticine/40/jake.png";
+            };
+
+            contador++;
+
+            let tarea = {
+                id: tareas.length,
+                nombre: nombre.value,
+                clase: emojiclase,
+                claseTxt: clase.value,
+                descripcion: descripcion.value,
+                estado: false
+            }
+
+            tareas.push(tarea);
+
+
+
+        }
+
+        // FUNCION PARA RENDERIZAR
+
+        const render = () => {
+
+            listaTareas.innerHTML = ''
+
+
+            tareas.map((tarea) => {
+
+                let templateTarea = '';
+
+
+                if (tarea.estado == false) {
+                    templateTarea = `<li id="tarea-${tarea.id}" class="unchecked"><span class="span" onclick="verTarea(${tarea.id})">
+                            <img class="iconClass" src="${tarea.clase}" />
+                            <h4 class="txtLista "> ${tarea.nombre} </h4>
+                            <!--<p class="txt"> ${tarea.descripcion} </p>  -->
+                            
+                        </span><img class="icon checkbox"
+                            src="https://img.icons8.com/plasticine/100/unchecked-checkbox.png" alt="unchecked-checkbox"
+                            onclick="tachar(${tarea.id},${tarea.estado})" /><img class="icon delete"
+                            src="https://img.icons8.com/plasticine/100/delete.png" alt="delete"
+                            onclick="borrarTarea(${tarea.id})" />`;
+
+
+
+                } else {
+                    templateTarea = `<li id="tarea-${tarea.id}" class="unchecked"><span class="span" onclick="verTarea(${tarea.id})">
+                            <img class="iconClass" src="${tarea.clase}" />
+                            <h4 class="txtLista checked"> ${tarea.nombre} </h4>
+                            <!--  <p class="txt"> ${tarea.descripcion} </p> -->
+
+                        </span><img class="icon checkbox"
+                            src="https://img.icons8.com/plasticine/100/checked-checkbox.png" alt="unchecked-checkbox"
+                            onclick="tachar(${tarea.id},${tarea.estado})" /><img class="icon delete"
+                            src="https://img.icons8.com/plasticine/100/delete.png" alt="delete"
+                            onclick="borrarTarea(${tarea.id})" />`;
+
+                }
+
+                listaTareas.innerHTML += templateTarea;
+
+
+
+            })
+
+            nombre.value = "";
+            clase.value = "hogar";
+            descripcion.value = "";
+
+
+        }
+
+        // AGREGAR LA TAREA AL ARRAY Y AL HTML
+
+        const agregarTarea = () => {
+            if (nombreTarea.value == "" || clasesTarea.value == "" || descripcionTarea.value == "") {
+                alert("Por favor rellena los campos");
+            } else {
+                crearTarea()
+                render()
+                section1.style.display = "none";
+                section2.style.display = "none";
+                section3.style.display = "flex";
+            }
+
+
+
+        }
+        // CHECK TAREA
+        let tachar = (id) => {
+            tareas[encontrar(id)].estado = !tareas[encontrar(id)].estado;
+
+            render();
+        };
+        let encontrar = (id) => {
+            let posicion = tareas.findIndex((tarea) => tarea.id === id);
+            return posicion;
+        };
+
+        // BORRAR TAREA
+
+
+        const borrarTarea = (posicion) => {
+
+            tareas.splice(posicion, 1);
+            listaTareas.innerHTML = '';
+
+            render();
+
+            if (tareas.length == 0) {
+                section1.style.display = "flex";
+                section2.style.display = "none";
+                section3.style.display = "none";
+                section4.style.display = "none";
+            };
+
+        }
+
+        // BOTON PARA AGREGAR MAS TAREAS
+        nuevaTareaBtn.addEventListener("click", () => {
+            section1.style.display = "none";
+            section2.style.display = "flex";
+            section3.style.display = "none";
+        });
+
+        // VER DETALLE TAREA
+        const verTarea = (id) => {
+
+            section4.innerHTML = "";
+            modeloDetalle = "";
+
+            if (!tareas[encontrar(id)].estado) {
+                modeloDetalle = `<div class="section__container--sec4">
+            <img id="closeIcon" class="iconSect4" src="https://img.icons8.com/plasticine/100/cancel.png" alt="cancel"
+                onclick="cerrarTarea()" />
+            <h4 id="tituloTarea" class="tituloTarea"> ${tareas[encontrar(id)].nombre} </h4>
+
+
+            <div id="div__tarea__img" class="txt"><img src="${tareas[encontrar(id)].clase}"/> </div>
+
+            <div id="div__desc--tarea" class="tareita">
+                <p id="txtDesc" class="txt"> ${tareas[encontrar(id)].descripcion} </p>
+            </div>
+            <div class="div__tareas--icon">
+                
+            </div>`} else {
+                modeloDetalle = `<div class="section__container--sec4">
+            <img id="closeIcon" class="iconSect4" src="https://img.icons8.com/plasticine/100/cancel.png" alt="cancel"
+                onclick="cerrarTarea()" />
+            <h4 id="tituloTarea" class="tituloTarea"> ${tareas[encontrar(id)].nombre} </h4>
+
+
+            <div id="div__tarea__img" class="txt"><img src="${tareas[encontrar(id)].clase}"/> </div>
+
+            <div id="div__desc--tarea" class="tareita">
+                <p id="txtDesc" class="txt"> ${tareas[encontrar(id)].descripcion} </p>
+            </div>
+            <div class="div__tareas--icon">
+                
+            </div>`}
+
+            section4.innerHTML += modeloDetalle;
+
+
+            section1.style.display = "none";
+            section2.style.display = "none";
+            section3.style.display = "none";
+            section4.style.display = "flex";
+
+
+        }
+
+        // CERRAR DETALLE TAREA 
+        const cerrarTarea = () => {
+            section1.style.display = "none";
+            section2.style.display = "none";
+            section3.style.display = "flex";
+            section4.style.display = "none";
+        }
+
+
+
+    </script>
+</body>
+
+</html>
