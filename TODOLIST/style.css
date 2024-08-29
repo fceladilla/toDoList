@@ -1,0 +1,291 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Kode Mono", monospace;
+  font-style: normal;
+}
+
+header,
+footer {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 60px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(240, 39, 147, 1);
+}
+
+footer {
+  background-color: rgba(129, 129, 129, 1);
+}
+
+/* SECTIONS */
+
+.section {
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  background: rgb(129, 129, 129);
+  background: linear-gradient(
+    0deg,
+    rgba(129, 129, 129, 1) 0%,
+    rgba(240, 39, 147, 1) 100%
+  );
+  /* padding: 10px; */
+}
+
+#section1 {
+  display: flex;
+  font-size: 14px;
+}
+
+#section2 {
+  display: none;
+}
+
+#section3 {
+  display: none;
+}
+
+#section4 {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTENEDORES */
+
+#s1-Div {
+  width: 400px;
+  height: 240px;
+}
+
+.taskManager {
+  height: 500px;
+  width: 80%;
+  max-width: 640px;
+  background: #f9f9f9;
+  margin: 10px auto 70px;
+  padding: 40px 30px 50px 30px;
+  border-radius: 10px;
+}
+
+.taskManager h2 {
+  color: #012255;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: #b6b0b0;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.div__tareas {
+  display: flex;
+  width: 100%;
+  max-width: 240px;
+  background: #f9f9f9;
+  margin: 10px auto 70px;
+  padding: 20px 30px 20px 30px;
+  border-radius: 10px;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 300px;
+}
+
+.tareita {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #b6b0b0;
+  height: 45px;
+  width: 180px;
+  margin-bottom: 15px;
+  border: solid 1px #535252;
+}
+
+.div__tareas--icon {
+  position: absolute;
+  bottom: 15px;
+}
+
+#div__desc--tarea {
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.inputs {
+  font-size: 18px;
+}
+
+/* BUTTONS */
+
+button {
+  border: none;
+  outline: none;
+  padding: 16px 50px;
+  background-color: #1f01a8;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 40px;
+}
+
+button:hover {
+  background-color: #1a0188;
+  color: #fff;
+}
+
+.masBtn {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+}
+
+.volverBtn {
+  position: absolute;
+  left: 120px;
+  bottom: 120px;
+}
+
+/* .btn {
+            position: absolute;
+            right: 400px;
+        } */
+
+/* LISTA Y ELEMENTOS */
+
+.titulo {
+  color: #fafafa;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  padding-left: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+#clases {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: #b6b0b0;
+  padding: 10px;
+  border-radius: 15px;
+  width: 100%;
+}
+
+ul li {
+  display: flex;
+  flex-flow: row;
+  background: #b6b0b0;
+  border-radius: 20px;
+  list-style: none;
+  font-size: 18px;
+  padding: 10px 8px 10px 25px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  margin: 0px 10px 10px 0px;
+}
+
+.span {
+  display: flex;
+}
+
+.txtTareas {
+  font-size: 18px;
+  margin: 10px;
+}
+
+.iconosTareas {
+  height: 40px;
+  width: 40px;
+}
+
+.tituloTarea {
+  font-size: 20px;
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
+#name {
+  color: rgb(109, 13, 64);
+}
+
+.checkBox {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  right: 70px;
+  top: 15px;
+  cursor: pointer;
+}
+
+.unchecked {
+  text-decoration: none;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+.deleteBox {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  right: 20px;
+  top: 15px;
+  cursor: pointer;
+}
+
+#closeIcon {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+#uncheckSect4,
+#deleteSect4,
+#checkSect4 {
+  height: 65px;
+  width: 65px;
+  cursor: pointer;
+}
+
+.descripcion {
+  display: flex;
+  align-items: flex-end;
+  height: 150px;
+  width: 580px;
+  background: none;
+  border-radius: 15px;
+  padding: 10px;
+}

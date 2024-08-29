@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDoList</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header id="header">
+        <h1 id="titulo" class="titulo">toDoList</h1>
+    </header>
+
+    <section id="section1" class="section">
+        <div id="s1-Div" class="taskManager">
+            <h2 id="saludo"></h2>
+            <div class="masBtnDiv">
+                <button id="masBtn" class="masBtn">+</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="section2" class="section">
+        <div class="taskManager">
+            <h2>Nueva Tarea</h2>
+            <div class="form" id="div__addTarea">
+                <input class="inputs" type="text" placeholder="Agregar tarea" id="addTarea">
+            </div>
+            <div class="form" id="div__clases">
+                <select name="" id="clases">
+                    <option class="inputs" value="Hogar"> Hogar </option>
+                    <option class="inputs" value="Trabajo"> Trabajo</option>
+                    ​<option class="inputs" value="Entretenimiento"> Entretenimiento </option>
+                    <option class="inputs" value="Otros"> Otros </option>
+                </select>
+            </div>
+
+            <div class="form" id="div__desc">
+                <textarea name="" cols="30" rows="10" class="inputs descripcion" type="text" placeholder="Descripcion"
+                    id="desc"></textarea>
+
+
+            </div>
+            <button id="tmBtn" class="btn" onclick="agregarTarea()">Agregar</button>
+
+        </div>
+    </section>
+
+    <section id="section3" class="section">
+        <div class="taskManager">
+            <h2>Tareas</h2>
+
+            <div id="tareas">
+                <ul id="listContainer">
+                </ul>
+                <button id="volver2" class="volverBtn">Nueva tarea</button>
+            </div>
+    </section>
+
+    <section id="section4" class="section">
+
+
+
+
+
+    </section>
+
+    <footer id="footer"></footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
