@@ -23,7 +23,7 @@ let cantidad = 0;
 
 let historial = JSON.parse(localStorage.getItem("tareasLocales"));
 
-if (historial.length > 0) {
+if (historial && historial.length > 0) {
   section1.style.display = "none";
   section2.style.display = "none";
   section3.style.display = "flex";
@@ -35,7 +35,7 @@ if (historial.length > 0) {
   render();
 }
 
-if (tareas.length > 0) {
+if (tareas.length == 0) {
   const frases = [
     '"El único modo de hacer un gran trabajo es amar lo que haces." ',
     '"La vida es lo que pasa mientras estás ocupado haciendo otros planes." ',
@@ -69,16 +69,19 @@ const crearTarea = () => {
   let emojiclase;
 
   if (clases.value == "Hogar") {
-    emojiclase = "https://img.icons8.com/plasticine/40/futurama-bender.png";
+    emojiclase = "./assets/bender.png";
   }
   if (clases.value == "Trabajo") {
-    emojiclase = "https://img.icons8.com/plasticine/40/rick-sanchez.png";
+    emojiclase = "./assets/rick.png";
   }
   if (clases.value == "Entretenimiento") {
-    emojiclase = "https://img.icons8.com/plasticine/40/homer-simpson.png";
+    emojiclase = "./assets/homero.png";
+  }
+  if (clases.value == "Familia") {
+    emojiclase = "./assets/ironman.png";
   }
   if (clases.value == "Otros") {
-    emojiclase = "https://img.icons8.com/plasticine/40/jake.png";
+    emojiclase = "./assets/jake.png";
   }
 
   cantidad++;
@@ -104,19 +107,19 @@ function render() {
       templateTarea = `<li id="tarea-${tarea.n}" class="unchecked" ><span class="span" onclick="verTarea(${tarea.n})">
                         <img class="iconosTareas" src="${tarea.clase}" />
                         <h4 class="txtTareas"> ${tarea.nombre} </h4>
-                        <p class="txtTareas"> ${tarea.descripcion} </p></span><img class="checkBox" 
-                            src="https://img.icons8.com/plasticine/100/unchecked-checkbox.png"
-                            alt="unchecked-checkbox" onclick="tachar(${tarea.n},${tarea.estado})" /><img class="deleteBox"
-                            src="https://img.icons8.com/plasticine/100/delete.png" alt="delete" onclick="borrarTarea(${tarea.n})"/>
+                        <p class="txtTareas"> ${tarea.descripcion} </p></span><img class="checkBox" src="./assets/unchecked.png" alt="unchecked-checkbox"
+            onclick="tachar(${tarea.n},${tarea.estado})" /><img class="deleteBox" src="./assets/delete.png" alt="delete"
+            onclick="borrarTarea(${tarea.n})" />
+
                     </li>`;
     } else {
       templateTarea = `<li id="tarea-${tarea.n}" class="checked"><span class="span" onclick="verTarea(${tarea.n})">
                         <img class="iconosTareas" src="${tarea.clase}" />
                         <h4 class="txtTareas"> ${tarea.nombre} </h4>
                         <p class="txtTareas"> ${tarea.descripcion} </p></span><img class="checkBox" 
-                            src="https://img.icons8.com/plasticine/100/checked-checkbox.png"
+                            src="./assets/checked.png"
                             alt="unchecked-checkbox" onclick="tachar(${tarea.n},${tarea.estado})" /><img class="deleteBox"
-                            src="https://img.icons8.com/plasticine/100/delete.png" alt="delete" onclick="borrarTarea(${tarea.n})"/>
+                            src="./assets/delete.png" alt="delete" onclick="borrarTarea(${tarea.n})"/>
                     </li>`;
     }
 
@@ -130,7 +133,7 @@ function render() {
 
 const renderTareaDetalle = (tarea) => {
   section4.innerHTML = `<div id="" class="div__tareas"> 
-    <img id="closeIcon" src="https://img.icons8.com/plasticine/100/cancel.png"
+    <img id="closeIcon" src="./assets/cancelar.png"
                   alt="cancel" onclick="cerrarTarea()" />
               <h4 id="tarea-${tarea.n}" class="tituloTarea">${tarea.nombre}</h4>
 
@@ -144,20 +147,20 @@ const renderTareaDetalle = (tarea) => {
               <div class="div__tareas--icon">
                   <img id="uncheckSect4" src=${
                     tarea.estado == false
-                      ? "https://img.icons8.com/plasticine/100/unchecked-checkbox.png"
-                      : "https://img.icons8.com/plasticine/100/checked-checkbox.png"
+                      ? "./assets/unchecked.png"
+                      : "./assets/checked.png"
                   }
                       alt="unchecked-checkbox" onclick="tachar(${tarea.n},${
     tarea.estado
   })" />
-                  <img id="deleteSect4" src="https://img.icons8.com/plasticine/100/delete.png" alt="delete"
+                  <img id="deleteSect4" src="./assets/delete.png" alt="delete"
                       onclick="eliminarTarea()" />
               </div>
               </div>`;
 };
 
 let tachar = (id) => {
-  tarea = tareas[encontrar(id)];
+  let tarea = tareas[encontrar(id)];
   tareas[encontrar(id)].estado = !tareas[encontrar(id)].estado;
 
   render();

@@ -159,8 +159,8 @@ button:hover {
 
 .volverBtn {
   position: absolute;
-  left: 120px;
-  bottom: 120px;
+  left: 150px;
+  bottom: 150px;
 }
 
 /* .btn {
@@ -288,4 +288,9 @@ ul li {
   background: none;
   border-radius: 15px;
   padding: 10px;
+}
+
+#desc {
+  outline: none;
+  border: none;
 }
